@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>diff</title>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/github.min.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+		<script src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/perl/perl.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/abbott.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/elegant.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/mdn-like.min.css" />
+		
+		<style>
+			body {
+				background-color: rgba(247, 247, 249, 0.2);
+			}
+
+			#page-container {
+				position: relative;
+				min-height: 100vh;
+			}
+			#content-wrap {
+				padding-bottom: 2.5rem;
+			}
+			#footer {
+				position: absolute;
+				bottom: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 2.5rem;
+				background-color: rgba(127, 127, 127, 0.2);
+			}
+
+			.editor-container {
+				display: flex;
+				width: 100%;
+				margin: 0 auto;
+				height: 45vh;
+			}
+			.editor {
+				flex: 1;
+				width: 48%;
+				margin: 0 1%;
+				height: 100%;
+			}
+
+			.CodeMirror{
+				font-family: consolas, monospace;
+				font-size: 18px;
+				height: 90%;
+			}
+			.d2h-diff-table {
+				font-size: 16px; /* diff 的字体 */
+			}
+		</style>
+	</head>
+	<body>
+		<div id="page-container">
+			<div id="content-wrap">
+				<div class="editor-container">
+					<div class="editor">
+						<textarea id="code1" name="code1"># source</textarea>
+					</div>
+					<div class="editor">
+						<textarea id="code2" name="code2"># target</textarea>
+					</div>
+				</div>
+				<div id="diff" style="tab-size:4"></div>
+				<br>
+			</div>
+			<footer id="footer"><span style="color: grey;">@@ -a,b +c,d @@</span>：当前 diff 展示左边文本的第 a ~ b 行，右边文本的第 c ~ d 行</footer>
+		</div>
+		<!-- <div style="width: 50%; margin: 0 auto;">
+			<textarea id="code1" name="code1"># source</textarea>
+			<br>
+			<textarea id="code2" name="code2"># target</textarea>
+		</div>
+		<br>
+		<div id="diff" style="tab-size:4"></div>
+		<br> -->
+		<script>
+			var interval = 0;
+			var editor1 = CodeMirror.fromTextArea(document.getElementById('code1'), {
+				lineNumbers: true,
+				indentUnit: 4,
+				mode: 'text/x-perl',
+				matchBrackets: true,
+				theme: 'mdn-like',
+			});
+			editor1.on('change', () => {
+				clearInterval(interval);
+				displayDiff();
+			});
+			var editor2 = CodeMirror.fromTextArea(document.getElementById('code2'), {
+				lineNumbers: true,
+				indentUnit: 4,
+				mode: 'text/x-perl',
+				matchBrackets: true,
+				theme: 'mdn-like',
+			});
+			editor2.on('change', () => {
+				clearInterval(interval);
+				displayDiff();
+			});
+			function compareTexts() {
+				var t1 = editor1.getDoc().getValue("\n");
+				var t2 = editor2.getDoc().getValue("\n");
+				var diff = Diff.createPatch("diff", t1, t2);
+				return diff;
+			}
+			function displayDiff(e) {
+				var diff = compareTexts();
+				var diffContainer = document.getElementById("diff");
+				var diffUI = new Diff2HtmlUI(diffContainer, diff, {
+					inputFormat: 'diff',
+					drawFileList: false,
+					matching: 'lines',
+					outputFormat: 'side-by-side'
+				});
+				diffUI.draw();
+			}
+			interval = setInterval(displayDiff, 1000);
+		</script>
+	</body>
+</html>
