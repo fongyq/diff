@@ -111,8 +111,8 @@
 				border-radius: 0.5rem;
 				background-color: rgba(223, 239, 243, 0.2); 
 				border: 1px solid #ccc; 
-				margin-left: 20%;
-				margin-right: 20%;
+				margin-left: 1%;
+				margin-right: 1%;
 			}
 			select:hover {
 				box-shadow: 0px 0px 3px 3px #6d0404;
@@ -137,6 +137,11 @@
 						<option value="text/css">CSS</option>
 						<option value="text/javascript">JavaScript</option>
 						<option value="text/x-perl" selected>Perl</option>
+					</select>
+					<select id="code-theme" class="selector" onchange="setTheme(event)">
+						<option value="abbott">abbott</option>
+						<option value="elegant">elegant</option>
+						<option value="mdn-like" selected>mdn-like</option>
 					</select>
 				</div>
 				<br>
@@ -207,6 +212,11 @@
 				var mode = event.target.value;
 				editor1.setOption("mode", mode);
 				editor2.setOption("mode", mode);
+			}
+			function setTheme(event) {
+				var theme = event.target.value;
+				editor1.setOption("theme", theme);
+				editor2.setOption("theme", theme);
 			}
 		</script>
 	</body>
