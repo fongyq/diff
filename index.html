@@ -18,11 +18,12 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/elegant.min.css" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/mdn-like.min.css" /> -->
 
+		<!-- diff -->
 		<script src="./npm_modules/diff/dist/diff.js"></script>
 		<link rel="stylesheet" href="./npm_modules/highlight.js/styles/github.css" >
 		<link rel="stylesheet" href="./npm_modules/diff2html/bundles/css/diff2html.min.css" >
 		<script src="./npm_modules/diff2html/bundles/js/diff2html-ui.min.js"></script>
-		
+		<!-- mode -->
 		<script src="./codemirror/codemirror-5.65.16/lib/codemirror.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/mode/perl/perl.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/mode/python/python.js"></script>
@@ -32,94 +33,41 @@
 		<script src="./codemirror/codemirror-5.65.16/mode/markdown/markdown.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/mode/gfm/gfm.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/mode/rst/rst.js"></script>
-		<script src="./codemirror/codemirror-5.65.16/mode/overlay.js"></script>
+		<script src="./codemirror/codemirror-5.65.16/addon/mode/overlay.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/mode/htmlmixed/htmlmixed.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/mode/xml/xml.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/mode/css/css.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/mode/javascript/javascript.js"></script>
+		<!-- theme -->
 		<link rel="stylesheet" type="text/css" href="./codemirror/codemirror-5.65.16/lib/codemirror.css" >
 		<link rel="stylesheet" type="text/css" href="./codemirror/codemirror-5.65.16/theme/abbott.css" >
+		<link rel="stylesheet" type="text/css" href="./codemirror/codemirror-5.65.16/theme/elegant.css" >
+		<link rel="stylesheet" type="text/css" href="./codemirror/codemirror-5.65.16/theme/eclipse.css" >
 		<link rel="stylesheet" type="text/css" href="./codemirror/codemirror-5.65.16/theme/mdn-like.css" >
-
+		<!-- 代码折叠 -->
 		<link rel="stylesheet" href="./codemirror/codemirror-5.65.16/addon/fold/foldgutter.css"/>
 		<script src="./codemirror/codemirror-5.65.16/addon/fold/foldcode.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/addon/fold/foldgutter.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/addon/fold/brace-fold.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/addon/fold/comment-fold.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/addon/fold/indent-fold.js"></script>
-		
+		<!-- search -->
 		<link rel="stylesheet" href="./codemirror/codemirror-5.65.16/addon/dialog/dialog.css"/>
 		<script src="./codemirror/codemirror-5.65.16/addon/dialog/dialog.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/addon/search/search.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/addon/search/searchcursor.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/addon/search/jump-to-line.js"></script>
 		<script src="./codemirror/codemirror-5.65.16/addon/search/match-highlighter.js"></script>
-
+		<!--全屏模式-->
+		<link rel="stylesheet" href="./codemirror/codemirror-5.65.16/addon/display/fullscreen.css">
+		<script src="./codemirror/codemirror-5.65.16/addon/display/fullscreen.js"></script>
+		<!-- 括号匹配 -->
 		<script src="./codemirror/codemirror-5.65.16/addon/edit/matchbrackets.js"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 		
-		<style>
-			body {
-				background-color: rgba(247, 247, 249, 0.2);
-			}
-
-			#page-container {
-				position: relative;
-				min-height: 100vh;
-			}
-			#content-wrap {
-				padding-bottom: 2.5rem;
-			}
-			#footer {
-				position: absolute;
-				bottom: 0;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				height: 2.5rem;
-				background-color: rgba(127, 127, 127, 0.2);
-			}
-
-			.editor-container {
-				display: flex;
-				width: 100%;
-				margin: 0 auto;
-				height: 45vh;
-			}
-			.editor {
-				flex: 1;
-				width: 48%;
-				margin: 0 1%;
-				height: 100%;
-			}
-
-			.CodeMirror{
-				font-family: consolas, monospace;
-				font-size: 18px;
-				height: 90%;
-			}
-			.d2h-diff-table {
-				font-size: 16px; /* diff 的字体 */
-			}
-
-			.selector {
-				text-align: center;
-				width: 6.3rem;
-				height: 1.5rem;
-				font-family: Consolas, monospace;
-				font-size: 0.8rem;
-				font-weight: bold;
-				color: #333;
-				border-radius: 0.5rem;
-				background-color: rgba(223, 239, 243, 0.2); 
-				border: 1px solid #ccc; 
-				margin-left: 1%;
-				margin-right: 1%;
-			}
-			select:hover {
-				box-shadow: 0px 0px 3px 3px #6d0404;
-			}
-		</style>
+		<link rel="stylesheet" href="./custom.css"/>
+		
 	</head>
 	<body>
 		<div id="page-container">
@@ -142,6 +90,7 @@
 					</select>
 					<select id="code-theme" class="selector" onchange="setTheme(event)">
 						<option value="abbott">Abbott</option>
+						<option value="eclipse">Eclipse</option>
 						<option value="elegant">Elegant</option>
 						<option value="mdn-like" selected>Mdn-like</option>
 					</select>
@@ -161,7 +110,6 @@
 			<footer id="footer"><span style="color: grey;">@@ -a,m +b,n @@</span>: 当前 diff 展示左边文本从第 a 行开始的 m 行、右边文本从第 b 行开始的 n 行</footer>
 		</div>
 		<script>
-			var interval = 0;
 			var editor1 = CodeMirror.fromTextArea(document.getElementById('code1'), {
 				lineNumbers: true,
 				indentUnit: 4,
@@ -172,9 +120,19 @@
 				lineWrapping:true,
 				foldGutter: true,
 				gutters:["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+				extraKeys: {
+					"Ctrl-K": function(cm) {
+						cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+					},
+					"F11": function(cm) {
+						cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+					},
+					"Esc": function(cm) {
+						if(cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+					}
+				}
 			});
 			editor1.on('change', () => {
-				clearInterval(interval);
 				displayDiff();
 			});
 			var editor2 = CodeMirror.fromTextArea(document.getElementById('code2'), {
@@ -187,9 +145,19 @@
 				lineWrapping:true,
 				foldGutter: true,
 				gutters:["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+				extraKeys: {
+					"Ctrl-K": function(cm) {
+						cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+					},
+					"F11": function(cm) {
+						cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+					},
+					"Esc": function(cm) {
+						if(cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+					}
+				}
 			});
 			editor2.on('change', () => {
-				clearInterval(interval);
 				displayDiff();
 			});
 			function compareTexts() {
@@ -209,7 +177,6 @@
 				});
 				diffUI.draw();
 			}
-			interval = setInterval(displayDiff, 1000);
 			function setLangMode(event) {
 				var mode = event.target.value;
 				editor1.setOption("mode", mode);
@@ -220,6 +187,7 @@
 				editor1.setOption("theme", theme);
 				editor2.setOption("theme", theme);
 			}
+			window.addEventListener("load", displayDiff);
 		</script>
 	</body>
 </html>
