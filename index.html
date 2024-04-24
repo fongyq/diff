@@ -77,7 +77,7 @@
 						<span class="tooltiptext">
 							<li>切换主题和语言不会改变 diff。</li>
 							<br/>
-							<li>光标位于文本框内，F11 全屏（Mac Ctrl-K），ESC 退出全屏。</li>
+							<li>光标位于文本框内，F11 全屏（Mac Ctrl-K），Esc 退出全屏。</li>
 							<br/>
 							<li>光标位于文本框内，Ctrl-F / Cmd-F 搜索，Ctrl-G / Cmd-G 查找下一个，Shift-Ctrl-G / Shift-Cmd-G 查找上一个，Shift-Ctrl-F / Cmd-Option-F 替换，Alt-G 跳到指定行。</li>
 						</span>
@@ -115,6 +115,9 @@
 				</div>
 				<div id="diff" style="tab-size:4"></div>
 				<br>
+			<div class="back-to-top fa-solid fa-circle-chevron-up" onclick="backToTop()">
+
+			</div>
 			</div>
 			<footer id="footer"><span style="color: grey;">@@ -a,m +b,n @@</span>: 当前 diff 展示左边文本从第 a 行开始的 m 行、右边文本从第 b 行开始的 n 行</footer>
 		</div>
@@ -197,6 +200,19 @@
 				editor2.setOption("theme", theme);
 			}
 			window.addEventListener("load", displayDiff);
+			function backToTop() {
+				window.scroll({
+					top: 0,
+					// behavior: "smooth"
+				})
+			}
+			window.addEventListener("scroll", function() {
+				if(window.pageYOffset > 100) {
+					document.querySelector(".back-to-top").classList.add("show");
+				} else {
+					document.querySelector(".back-to-top").classList.remove("show");
+				}
+			});
 		</script>
 	</body>
 </html>

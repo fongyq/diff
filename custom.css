@@ -93,3 +93,17 @@ select:hover {
 .tooltip-inner {
     white-space: pre-line;
 }
+
+.back-to-top {
+    position: fixed;
+    z-index: 100;
+    font-size: 2rem;
+    opacity: 0.8;
+    bottom: 50vh;
+    right: 2vw;
+    display: none;
+    cursor: pointer;
+}
+.show {
+    display: block;
+}
