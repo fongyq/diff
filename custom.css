@@ -59,3 +59,37 @@ body {
 select:hover {
     box-shadow: 0px 0px 3px 3px #6d0404;
 }
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 600px;
+    top: 100%;
+    left: 50%;
+    margin-top: 10px;
+    margin-left: -300px;
+    background-color: rgb(25, 22, 22);
+    color: #d0c8c8;
+    text-align: left;
+    font-size: 1rem;
+    font-family: Consolas, monospace;
+    padding: 5px 5px;
+    border-radius: 6px;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 10;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.tooltip-inner {
+    white-space: pre-line;
+}
