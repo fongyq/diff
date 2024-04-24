@@ -115,9 +115,7 @@
 				</div>
 				<div id="diff" style="tab-size:4"></div>
 				<br>
-			<div class="back-to-top fa-solid fa-circle-chevron-up" onclick="backToTop()">
-
-			</div>
+			<div class="back-to-top fa-solid fa-circle-chevron-up" onclick="backToTop()"></div>
 			</div>
 			<footer id="footer"><span style="color: grey;">@@ -a,m +b,n @@</span>: 当前 diff 展示左边文本从第 a 行开始的 m 行、右边文本从第 b 行开始的 n 行</footer>
 		</div>
@@ -207,7 +205,7 @@
 				})
 			}
 			window.addEventListener("scroll", function() {
-				if(window.pageYOffset > 100) {
+				if ((document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)) {
 					document.querySelector(".back-to-top").classList.add("show");
 				} else {
 					document.querySelector(".back-to-top").classList.remove("show");
