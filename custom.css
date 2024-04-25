@@ -75,12 +75,12 @@ select:hover {
     left: 50%;
     margin-top: 10px;
     margin-left: -300px;
-    background-color: rgb(25, 22, 22);
+    background-color: rgb(48, 45, 45);
     color: #d0c8c8;
     text-align: left;
     font-size: 1rem;
     font-family: Consolas, monospace;
-    padding: 5px 5px;
+    padding: 20px 20px;
     border-radius: 6px;
     /* Position the tooltip text - see examples below! */
     position: absolute;
@@ -99,7 +99,17 @@ select:hover {
     z-index: 100;
     font-size: 2rem;
     opacity: 0.8;
-    bottom: 50vh;
+    bottom: 55vh;
+    right: 2vw;
+    display: none;
+    cursor: pointer;
+}
+.back-to-bottom {
+    position: fixed;
+    z-index: 100;
+    font-size: 2rem;
+    opacity: 0.8;
+    bottom: 47vh;
     right: 2vw;
     display: none;
     cursor: pointer;
