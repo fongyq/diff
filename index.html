@@ -108,6 +108,7 @@
                         <option value="elegant">Elegant</option>
                         <option value="mdn-like" selected>Mdn-like</option>
                     </select>
+                    <button onclick="clearText()" class="button">Clear</button>
                 </div>
                 <br>
                 <div class="editor-container">
@@ -217,6 +218,11 @@
                     top: document.body.scrollHeight,
                     // behavior: "smooth"
                 })
+            }
+            function clearText() {
+                editor1.setValue("");
+                editor2.setValue("");
+                displayDiff();
             }
             window.addEventListener("scroll", function() {
                 if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
