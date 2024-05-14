@@ -82,12 +82,14 @@
                         <span class="tooltiptext">
                             <li>切换主题和语言不会改变 diff。</li>
                             <br/>
-                            <li>光标位于文本框内，F11 全屏（Mac Ctrl-B），Esc 退出全屏。</li>
+                            <li>光标位于文本框内，F11 / Ctrl-B 全屏，Esc 退出全屏。</li>
                             <br/>
                             <li>光标位于文本框内，Ctrl-F / Cmd-F 搜索，Ctrl-G / Cmd-G 查找下一个，Shift-Ctrl-G / Shift-Cmd-G 查找上一个，Shift-Ctrl-F / Cmd-Option-F 替换，Alt-G 跳到指定行。</li>
+                            <br/>
+                            <li>「Wrap」换行对「Side-By-Side」模式支持不是很好。</li>
                         </span>
                     </div>
-                    <select id="code-mode" class="selector" onchange="setLangMode(event)">
+                    <select id="code-mode" class="selector" onchange="setLangMode(event)" title="编辑器语言">
                         <option value="text/plain">Plain</option>
                         <option value="text/x-csrc">C</option>
                         <option value="text/x-c++src">C++</option>
@@ -102,13 +104,19 @@
                         <option value="text/javascript">JavaScript</option>
                         <option value="text/x-perl" selected>Perl</option>
                     </select>
-                    <select id="code-theme" class="selector" onchange="setTheme(event)">
+                    <select id="code-theme" class="selector" onchange="setTheme(event)" title="编辑器主题">
                         <option value="abbott">Abbott</option>
                         <option value="eclipse">Eclipse</option>
                         <option value="elegant">Elegant</option>
                         <option value="mdn-like" selected>Mdn-like</option>
                     </select>
-                    <button onclick="clearText()" class="button">Clear</button>
+                    <select id="diff-format" class="selector" onchange="setDiffFormat(event)" style="width: 7.6rem" title="diff 输出模式">
+                        <option value="side-by-side" selected>Side-By-Side</option>
+                        <option value="line-by-line">Line-By-Line</option>
+                    </select>
+                    <button title="清空文本框" onclick="clearText()" class="button">Clear</button>
+                    <label title="长行自动换行" class="check-box">
+                        <input type="checkbox" id="check-wrap" onclick="checkWrap(this)">Wrap</label>
                 </div>
                 <br>
                 <div class="editor-container">
@@ -185,16 +193,26 @@
                 var diff = Diff.createPatch("diff", t1, t2);
                 return diff;
             }
-            function displayDiff(e) {
+            var diffOption = {
+                inputFormat: 'diff',
+                drawFileList: false,
+                matching: 'lines',
+                outputFormat: 'side-by-side'
+            };
+            var diffWrap = false;
+            function displayDiff() {
                 var diff = compareTexts();
                 var diffContainer = document.getElementById("diff");
-                var diffUI = new Diff2HtmlUI(diffContainer, diff, {
-                    inputFormat: 'diff',
-                    drawFileList: false,
-                    matching: 'lines',
-                    outputFormat: 'side-by-side'
-                });
+                var diffUI = new Diff2HtmlUI(diffContainer, diff, diffOption);
                 diffUI.draw();
+                if (diffWrap) {
+                    var eles = document.getElementsByClassName('d2h-code-line-ctn');
+                    for (var i = 0; i < eles.length; i++) {
+                        eles[i].style.whiteSpace = "pre-wrap";
+                        eles[i].style.wordBreak = "break-all";
+                        eles[i].style.overflowWrap = "anywhere";
+                    }
+                }
             }
             function setLangMode(event) {
                 var mode = event.target.value;
@@ -205,6 +223,23 @@
                 var theme = event.target.value;
                 editor1.setOption("theme", theme);
                 editor2.setOption("theme", theme);
+            }
+            function setDiffFormat(event) {
+                var format = event.target.value;
+                diffOption.outputFormat = format;
+                displayDiff();
+            }
+            function checkWrap(obj) {
+                if (obj.checked) {
+                    diffWrap = true;
+                    editor1.setOption("lineWrapping", true);
+                    editor2.setOption("lineWrapping", true);
+                } else {
+                    diffWrap = false;
+                    editor1.setOption("lineWrapping", false);
+                    editor2.setOption("lineWrapping", false);
+                }
+                displayDiff();
             }
             window.addEventListener("load", displayDiff);
             function backToTop() {
