@@ -86,7 +86,7 @@
                             <br/>
                             <li>光标位于文本框内，Ctrl-F / Cmd-F 搜索，Ctrl-G / Cmd-G 查找下一个，Shift-Ctrl-G / Shift-Cmd-G 查找上一个，Shift-Ctrl-F / Cmd-Option-F 替换，Alt-G 跳到指定行。</li>
                             <br/>
-                            <li>「Wrap」换行对「Side-By-Side」模式的支持不是很好，一个 diff 块两边的行可能没有对齐。</li>
+                            <li>「Wrap」换行对「Side-by-side」模式的支持不是很好，一个 diff 块两边的行可能没有对齐。</li>
                         </span>
                     </div>
                     <select id="code-mode" class="selector" onchange="setLangMode(event)" title="编辑器语言">
@@ -118,17 +118,15 @@
                     <label title="长行自动换行" class="check-box">
                         <input type="checkbox" id="check-wrap" onclick="checkWrap(this)">Wrap</label>
                 </div>
-                <br>
                 <div class="editor-container">
-                    <div class="editor">
+                    <div class="editor" id="text1">
                         <textarea id="code1" name="code1"># source</textarea>
                     </div>
-                    <div class="editor">
+                    <div class="editor" id="text2">
                         <textarea id="code2" name="code2"># target</textarea>
                     </div>
                 </div>
                 <div id="diff" style="tab-size:4"></div>
-                <br>
                 <div class="back-to-top fa-solid fa-circle-chevron-up" onclick="backToTop()"></div>
                 <div class="back-to-bottom fa-solid fa-circle-chevron-down" onclick="backToBottom()"></div>
             </div>
@@ -161,6 +159,12 @@
             editor1.on('change', () => {
                 displayDiff();
             });
+            editor1.on('focus', () => {
+                document.getElementById("text1").style.border = "2px solid rgba(11, 58, 77, 0.8)";
+            });
+            editor1.on('blur', () => {
+                document.getElementById("text1").style.border = "2px solid rgba(39, 64, 101, 0.3)";
+            });
             var editor2 = CodeMirror.fromTextArea(document.getElementById('code2'), {
                 lineNumbers: true,
                 lineWrapping: false,
@@ -186,6 +190,12 @@
             });
             editor2.on('change', () => {
                 displayDiff();
+            });
+            editor2.on('focus', () => {
+                document.getElementById("text2").style.border = "2px solid rgba(11, 58, 77, 0.8)";
+            });
+            editor2.on('blur', () => {
+                document.getElementById("text2").style.border = "2px solid rgba(39, 64, 101, 0.3)";
             });
             function compareTexts() {
                 var t1 = editor1.getDoc().getValue("\n");
