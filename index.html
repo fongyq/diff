@@ -87,6 +87,8 @@
                             <li>光标位于文本框内，Ctrl-F / Cmd-F 搜索，Ctrl-G / Cmd-G 查找下一个，Shift-Ctrl-G / Shift-Cmd-G 查找上一个，Shift-Ctrl-F / Cmd-Option-F 替换，Alt-G 跳到指定行。</li>
                             <br/>
                             <li>「Wrap」换行对「Side-by-side」模式的支持不是很好，一个 diff 块两边的行可能没有对齐。</li>
+                            <br/>
+                            <li>可以在浏览器的网站权限设置中添加剪切板读权限，避免每次粘贴都要询问。</li>
                         </span>
                     </div>
                     <select id="code-mode" class="selector" onchange="setLangMode(event)" title="编辑器语言">
@@ -115,6 +117,8 @@
                         <option value="line-by-line">Line-by-line</option>
                     </select>
                     <button title="清空文本框" onclick="clearText()" class="button">Clear</button>
+                    <button title="粘贴到左边" id="paste-l" class="button">Paste-L</button>
+                    <button title="粘贴到右边" id="paste-r" class="button">Paste-R</button>
                     <label title="长行自动换行" class="check-box">
                         <input type="checkbox" id="check-wrap" onclick="checkWrap(this)">Wrap</label>
                 </div>
@@ -284,6 +288,20 @@
                     document.querySelector(".back-to-bottom").classList.add("show");
                 }
             });
+            document.getElementById("paste-l").addEventListener(
+                "click",
+                async(e) => {
+                    const text = await navigator.clipboard.readText();
+                    editor1.setValue(text);
+                }
+            );
+            document.getElementById("paste-r").addEventListener(
+                "click",
+                async(e) => {
+                    const text = await navigator.clipboard.readText();
+                    editor2.setValue(text);
+                }
+            );
         </script>
     </body>
 </html>
