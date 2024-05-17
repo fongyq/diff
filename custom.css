@@ -50,10 +50,10 @@ body {
 
 .selector {
     text-align: center;
-    width: 6.4rem;
-    height: 1.5rem;
+    width: 8rem;
+    height: 2rem;
     font-family: monospace, Consolas, 'Courier New', Courier;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #333;
     border-radius: 0.5rem;
@@ -127,10 +127,10 @@ select:hover {
 
 .button {
     text-align: center;
-    width: 5rem;
-    height: 1.5rem;
+    width: 8rem;
+    height: 2rem;
     font-family: monospace, Consolas, 'Courier New', Courier;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #333;
     border-radius: 0.5rem;
@@ -151,16 +151,17 @@ label:hover {
 }
 .check-box {
     text-align: center;
-    width: 7rem;
-    height: 1.5rem;
+    width: 8rem;
+    height: 2rem;
     font-family: monospace, Consolas, 'Courier New', Courier;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #333;
     margin-left: 0.2%;
     margin-right: 0.2%;
     border-radius: 5px;
-    padding: 0.2rem 0.5rem;
+    border: 2px solid rgba(39, 64, 101, 0.7);
+    padding: 0.3rem 0.5rem;
 }
 #check-wrap {
     vertical-align: middle;
