@@ -81,7 +81,7 @@ select:hover {
     top: 100%;
     left: 50%;
     margin-top: 10px;
-    margin-left: -300px;
+    margin-left: -50px;
     background-color: rgb(48, 45, 45);
     color: #d0c8c8;
     text-align: left;
@@ -127,7 +127,7 @@ select:hover {
 
 .button {
     text-align: center;
-    width: 8rem;
+    width: 6rem;
     height: 2rem;
     font-family: monospace, Consolas, 'Courier New', Courier;
     font-size: 1rem;
@@ -161,7 +161,7 @@ label:hover {
     margin-right: 0.2%;
     border-radius: 5px;
     border: 2px solid rgba(39, 64, 101, 0.7);
-    padding: 0.3rem 0.5rem;
+    padding: 0.25rem 0.5rem;
 }
 #check-wrap {
     vertical-align: middle;
