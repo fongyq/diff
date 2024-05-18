@@ -4,14 +4,14 @@ body {
 
 #page-container {
     position: relative;
-    min-height: 100vh;
+    min-height: 95vh;
 }
 #content-wrap {
     padding-bottom: 2.5rem;
 }
 #footer {
     position: absolute;
-    bottom: 0;
+    bottom: -3.5vh;
     display: flex;
     align-items: center;
     justify-content: center;
