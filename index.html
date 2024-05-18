@@ -274,6 +274,7 @@
                 editor1.setValue("");
                 editor2.setValue("");
                 displayDiff();
+                document.querySelector(".back-to-bottom").classList.remove("show");
             }
             window.addEventListener("scroll", function() {
                 if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
