@@ -130,6 +130,7 @@
                         <textarea id="code2" name="code2"># target</textarea>
                     </div>
                 </div>
+                <div class="popup" id="popup-info"></div>
                 <div id="diff" style="tab-size:4"></div>
                 <div class="back-to-top fa-solid fa-circle-chevron-up" onclick="backToTop()"></div>
                 <div class="back-to-bottom fa-solid fa-circle-chevron-down" onclick="backToBottom()"></div>
@@ -293,6 +294,7 @@
                 async(e) => {
                     const text = await navigator.clipboard.readText();
                     editor1.setValue(text);
+                    popElement("粘贴成功", "text1", "center", 500);
                 }
             );
             document.getElementById("paste-r").addEventListener(
@@ -300,8 +302,27 @@
                 async(e) => {
                     const text = await navigator.clipboard.readText();
                     editor2.setValue(text);
+                    popElement("粘贴成功", "text2", "center", 500);
                 }
             );
+            function popElement(info, boxName, pos, timeout) {
+                var box = document.getElementById(boxName);
+                var boxRect = box.getBoundingClientRect();
+                var popup = document.getElementById("popup-info");
+                popup.style.display = 'flex';
+                popup.innerText = info;
+                var ppRect = popup.getBoundingClientRect();
+                if (pos === "under") {
+                    popup.style.top = boxRect.bottom + 20 + "px";
+                    popup.style.left = boxRect.left - (ppRect.width - boxRect.width) / 2 + "px";
+                } else if (pos === "center") {
+                    popup.style.top = boxRect.top + (boxRect.height - ppRect.height) / 2 + "px";
+                    popup.style.left = boxRect.left - (ppRect.width - boxRect.width) / 2 + "px";
+                }
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, timeout);
+            }
         </script>
     </body>
 </html>

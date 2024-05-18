@@ -167,3 +167,23 @@ label:hover {
     vertical-align: middle;
     accent-color: rgba(21, 54, 86, 0.2);
 }
+
+.popup {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    top: 10vh;
+    left: 45vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 8rem;
+    height: 3rem;
+    font-family: monospace, Consolas, 'Courier New', Courier;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    border-radius: 0.5rem;
+    background-color: rgb(243, 212, 183);
+    border: none; 
+}
