@@ -37,7 +37,7 @@ body {
 }
 
 .CodeMirror{
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 18px;
     line-height: 24px;
     height: 100%;
@@ -45,14 +45,14 @@ body {
 }
 .d2h-diff-table {
     font-size: 16px; /* diff 的字体 */
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
 }
 
 .selector {
     text-align: center;
     width: 8rem;
     height: 2rem;
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 1rem;
     font-weight: bold;
     color: #333;
@@ -86,7 +86,7 @@ select:hover {
     color: #d0c8c8;
     text-align: left;
     font-size: 1rem;
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     padding: 20px 20px;
     border-radius: 6px;
     /* Position the tooltip text - see examples below! */
@@ -129,7 +129,7 @@ select:hover {
     text-align: center;
     width: 6rem;
     height: 2rem;
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 1rem;
     font-weight: bold;
     color: #333;
@@ -153,7 +153,7 @@ label:hover {
     text-align: center;
     width: 8rem;
     height: 2rem;
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 1rem;
     font-weight: bold;
     color: #333;
@@ -179,7 +179,7 @@ label:hover {
     text-align: center;
     width: 8rem;
     height: 3rem;
-    font-family: Menlo, Consolas, monospace;
+    font-family: Menlo, 'Droid Sans Mono', Consolas, monospace;
     font-size: 1.2rem;
     font-weight: bold;
     color: #333;
