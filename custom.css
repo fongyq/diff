@@ -187,3 +187,17 @@ label:hover {
     background-color: rgb(243, 212, 183);
     border: none; 
 }
+
+.fullscreen {
+    position: fixed;
+    overflow: scroll;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    z-index: 9999;
+    background-color: #f6f9f9;
+}
