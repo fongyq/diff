@@ -89,6 +89,8 @@
                             <li>「Wrap」换行对「Side-by-side」模式的支持不是很好，一个 diff 块两边的行可能没有对齐。</li>
                             <br/>
                             <li>可以在浏览器的网站权限设置中添加剪切板读权限，避免每次粘贴都要询问。</li>
+                            <br/>
+                            <li>「Char」粒度的 diff 适合中文。</li>
                         </span>
                     </div>
                     <select id="code-mode" class="selector" onchange="setLangMode(event)" title="编辑器语言">
@@ -115,6 +117,10 @@
                     <select id="diff-format" class="selector" onchange="setDiffFormat(event)" style="width:9rem" title="diff 输出模式">
                         <option value="side-by-side" selected>Side-by-side</option>
                         <option value="line-by-line">Line-by-line</option>
+                    </select>
+                    <select id="diff-style" class="selector" onchange="setDiffStyle(event)" style="width:5rem" title="diff 粒度">
+                        <option value="Word" selected>Word</option>
+                        <option value="Char">Char</option>
                     </select>
                     <button title="粘贴到左边" id="paste-l" class="button">Paste-L</button>
                     <button title="粘贴到右边" id="paste-r" class="button">Paste-R</button>
