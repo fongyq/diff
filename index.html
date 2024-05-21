@@ -119,8 +119,8 @@
                         <option value="line-by-line">Line-by-line</option>
                     </select>
                     <select id="diff-style" class="selector" onchange="setDiffStyle(event)" style="width:5rem" title="diff 粒度">
-                        <option value="Word" selected>Word</option>
-                        <option value="Char">Char</option>
+                        <option value="word" selected>Word</option>
+                        <option value="char">Char</option>
                     </select>
                     <button title="粘贴到左边" id="paste-l" class="button">Paste-L</button>
                     <button title="粘贴到右边" id="paste-r" class="button">Paste-R</button>
@@ -218,6 +218,7 @@
             var diffOption = {
                 inputFormat: 'diff',
                 drawFileList: false,
+                diffStyle: 'word',
                 matching: 'lines',
                 maxLineLengthHighlight: 1000000,
                 outputFormat: 'side-by-side'
@@ -250,6 +251,11 @@
             function setDiffFormat(event) {
                 var format = event.target.value;
                 diffOption.outputFormat = format;
+                displayDiff();
+            }
+            function setDiffStyle(event) {
+                var style = event.target.value;
+                diffOption.diffStyle = style;
                 displayDiff();
             }
             function checkWrap(obj) {
