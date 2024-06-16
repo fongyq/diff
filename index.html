@@ -71,6 +71,8 @@
         <script src="./codemirror/codemirror-5.65.16/addon/scroll/simplescrollbars.js"></script>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         
         <link rel="stylesheet" href="./custom.css"/>
         
@@ -126,10 +128,12 @@
                         <option value="word" selected>Word</option>
                         <option value="char">Char</option>
                     </select>
-                    <button title="diff 全屏" onclick="expandDiff()" class="button" style="width: 8rem;">Expand-Diff</button>
+                    <button title="diff 全屏" onclick="expandDiff()" class="button" style="width: 8rem;">Expand Diff</button>
                     <button title="粘贴到左边" id="paste-l" class="button">Paste-L</button>
                     <button title="粘贴到右边" id="paste-r" class="button">Paste-R</button>
                     <button title="清空文本框" onclick="clearText()" class="button" style="width: 5rem;">Clear</button>
+                    <label title="显示 tab" class="check-box">
+                        <input type="checkbox" id="check-tab" onclick="checkTabShow(this)">Show Tab</label>
                     <label title="长行自动换行" class="check-box">
                         <input type="checkbox" id="check-wrap" onclick="checkWrap(this)">Wrap</label>
                 </div>
@@ -154,6 +158,8 @@
                 lineWrapping: false,
                 scrollbarStyle: "overlay",
                 indentUnit: 4,
+                tabSize: 4,
+                indentWithTabs: false,
                 mode: 'text/x-perl',
                 matchBrackets: true,
                 theme: 'mdn-like',
@@ -264,6 +270,17 @@
                 diffOption.diffStyle = style;
                 displayDiff();
             }
+            function checkTabShow(obj) {
+                if (obj.checked) {
+                    editor1.setOption("indentWithTabs", true);
+                    editor2.setOption("indentWithTabs", true);
+                    $("#tab-style").html(".cm-tab{opacity: 0.5}");
+                } else {
+                    editor1.setOption("indentWithTabs", false);
+                    editor2.setOption("indentWithTabs", false);
+                    $("#tab-style").html(".cm-tab{opacity: 0}");
+                }
+            }
             function checkWrap(obj) {
                 if (obj.checked) {
                     diffWrap = true;
@@ -357,5 +374,8 @@
                 }, timeout);
             }
         </script>
+        <style id="tab-style">
+            .cm-tab{opacity: 0;}
+        </style>
     </body>
 </html>
