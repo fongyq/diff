@@ -80,23 +80,17 @@
     <body>
         <div id="page-container">
             <div id="content-wrap">
-                <div style="text-align:center;padding-top:10px;">
+                <div class="function-container">
                     <div class="tooltip fa-regular fa-question-circle">
-                        <span class="tooltiptext">
+                        <ul class="tooltiptext">
                             <li>切换主题和语言不会改变 diff。</li>
-                            <br/>
                             <li>光标位于文本框内，F11 / Ctrl-B 全屏，Esc 退出全屏；F11 / Ctrl-B / Esc 可以退出 diff 全屏。</li>
-                            <br/>
                             <li>光标位于文本框内，Ctrl-F / Cmd-F 搜索，Ctrl-G / Cmd-G 查找下一个，Shift-Ctrl-G / Shift-Cmd-G 查找上一个，Shift-Ctrl-F / Cmd-Option-F 替换，Alt-G 跳到指定行。</li>
-                            <br/>
                             <li>「Wrap」换行对「Side-by-side」模式的支持不是很好，一个 diff 块两边的行可能没有对齐。</li>
-                            <br/>
                             <li>「Side-by-side」模式下，中英文混杂的文本 diff 会发生错位。</li>
-                            <br/>
                             <li>可以在浏览器的网站权限设置中添加剪切板读权限，避免每次粘贴都要询问。</li>
-                            <br/>
                             <li>「Char」粒度的 diff 适合中文。</li>
-                        </span>
+                        </ul>
                     </div>
                     <select id="code-mode" class="selector" onchange="setLangMode(event)" title="编辑器语言">
                         <option value="text/plain">Plain</option>
