@@ -108,6 +108,13 @@ select:hover {
 .tooltip-inner {
     white-space: pre-line;
 }
+.tooltip ul {
+    margin: 20px;
+}
+.tooltip li {
+    margin: 10px 20px;
+    line-height: 1.5rem;
+}
 
 .back-to-top {
     position: fixed;
