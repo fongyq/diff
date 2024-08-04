@@ -122,10 +122,6 @@
                         <option value="word" selected>Word</option>
                         <option value="char">Char</option>
                     </select>
-                    <button title="diff 全屏" onclick="expandDiff()" class="button" style="width: 8rem;">Expand Diff</button>
-                    <button title="粘贴到左边" id="paste-l" class="button">Paste-L</button>
-                    <button title="粘贴到右边" id="paste-r" class="button">Paste-R</button>
-                    <button title="清空文本框" onclick="clearText()" class="button" style="width: 5rem;">Clear</button>
                     <label title="显示 tab" class="check-box">
                         <input type="checkbox" id="check-tab" onclick="checkTabShow(this)">Show Tab</label>
                     <label title="长行自动换行" class="check-box">
@@ -134,6 +130,26 @@
                 <div class="editor-container">
                     <div class="editor" id="text1">
                         <textarea id="code1" name="code1"># source</textarea>
+                    </div>
+                    <div id="button-list">
+                        <li>
+                            <button class="icon-button fa-solid fa-maximize fa-1x" title="diff 全屏" onclick="expandDiff()"></button>
+                        </li>
+                        <li>
+                            <button class="icon-button" title="粘贴到左边" id="paste-l">
+                                <i>fa-solid fa-caret-left fa-1x</i>
+                                <i>fa-solid fa-paste fa-1x</i>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="icon-button" title="粘贴到右边" id="paste-r">
+                                <i>fa-solid fa-paste fa-1x</i>
+                                <i>fa-solid fa-caret-right fa-1x</i>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="icon-button fa-solid fa-broom fa-1x" title="清空文本框" onclick="clearText()"></button>
+                        </li>
                     </div>
                     <div class="editor" id="text2">
                         <textarea id="code2" name="code2"># target</textarea>
