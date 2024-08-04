@@ -132,24 +132,26 @@
                         <textarea id="code1" name="code1"># source</textarea>
                     </div>
                     <div id="button-list">
+                      <ul>
                         <li>
                             <button class="icon-button fa-solid fa-maximize fa-1x" title="diff 全屏" onclick="expandDiff()"></button>
                         </li>
                         <li>
                             <button class="icon-button" title="粘贴到左边" id="paste-l">
-                                <i>fa-solid fa-caret-left fa-1x</i>
-                                <i>fa-solid fa-paste fa-1x</i>
+                                <i class="fa-solid fa-caret-left fa-1x"></i>
+                                <i class="fa-solid fa-paste fa-1x"></i>
                             </button>
                         </li>
                         <li>
                             <button class="icon-button" title="粘贴到右边" id="paste-r">
-                                <i>fa-solid fa-paste fa-1x</i>
-                                <i>fa-solid fa-caret-right fa-1x</i>
+                                <i class="fa-solid fa-paste fa-1x"></i>
+                                <i class="fa-solid fa-caret-right fa-1x"></i>
                             </button>
                         </li>
                         <li>
                             <button class="icon-button fa-solid fa-broom fa-1x" title="清空文本框" onclick="clearText()"></button>
                         </li>
+                      </ul>
                     </div>
                     <div class="editor" id="text2">
                         <textarea id="code2" name="code2"># target</textarea>
