@@ -137,7 +137,7 @@
                             <button class="icon-button fa-solid fa-maximize fa-1x" title="diff 全屏" onclick="expandDiff()"></button>
                         </li>
                         <li>
-                            <button class="icon-button fa-solid fa-arrow-up-a-z fa-lg" title="文本按行排序" onclick="sortText()"></button>
+                            <button class="icon-button fa-solid fa-arrow-up-z-a fa-lg" title="文本按行排序" onclick="sortText()"></button>
                         </li>
                         <li>
                             <button class="icon-button" title="粘贴到左边" id="paste-l">
@@ -337,10 +337,13 @@
             function sortLines(text) {
                 text = text.split("\n").filter(line => line.trim());
                 text.sort();
-                return text;
+                return text.join("\n");
             }
             function sortText() {
-                
+                var t1 = editor1.grtDoc().getValue("\n");
+                var t2 = editor2.grtDoc().getValue("\n");
+                editor1.setValue(sortLines(t1));
+                editor2.setValue(sortLines(t2));
             }
             function clearText() {
                 editor1.setValue("");
