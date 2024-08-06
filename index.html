@@ -336,9 +336,13 @@
                     }
                 }
             });
+            var isReverse = false;
             function sortLines(text) {
                 text = text.split("\n").filter(line => line.trim());
                 text.sort();
+                if (isReverse) {
+                    text.reverse();
+                }
                 return text.join("\n");
             }
             function sortText() {
@@ -346,6 +350,7 @@
                 var t2 = editor2.getDoc().getValue("\n");
                 editor1.setValue(sortLines(t1));
                 editor2.setValue(sortLines(t2));
+                isReverse = !isReverse;
             }
             function clearText() {
                 editor1.setValue("");
