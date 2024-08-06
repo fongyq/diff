@@ -137,6 +137,9 @@
                             <button class="icon-button fa-solid fa-maximize fa-1x" title="diff 全屏" onclick="expandDiff()"></button>
                         </li>
                         <li>
+                            <button class="icon-button fa-solid fa-arrow-up-a-z fa-lg" title="文本按行排序" onclick="sortText()"></button>
+                        </li>
+                        <li>
                             <button class="icon-button" title="粘贴到左边" id="paste-l">
                                 <i class="fa-solid fa-caret-left fa-1x"></i>
                                 <i class="fa-solid fa-paste fa-lg"></i>
@@ -331,6 +334,14 @@
                     }
                 }
             });
+            function sortLines(text) {
+                text = text.split("\n").filter(line => line.trim());
+                text.sort();
+                return text;
+            }
+            function sortText() {
+                
+            }
             function clearText() {
                 editor1.setValue("");
                 editor2.setValue("");
