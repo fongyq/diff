@@ -176,7 +176,7 @@ label:hover {
     color: #333;
     margin: 0 0.7%;
     border-radius: 0.5rem;
-    padding: 0.25rem 0rem;
+    padding: 0.25rem 0.2rem;
 }
 #check-tab {
     vertical-align: middle;
